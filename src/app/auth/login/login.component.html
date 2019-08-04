@@ -1,17 +1,19 @@
 <section>
-    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" [formGroup]="loginForm"
-        (ngSubmit)="onSubmit()">
-        <mat-form-field>
-            <input type="email" matInput placeholder="Your Email" formControlName="email" />
-            <mat-hint>Please enter a valid email</mat-hint>
-            <mat-error *ngIf="loginForm.get('email').hasError('required')">Field must not be empty</mat-error>
-            <mat-error *ngIf="loginForm.get('email').hasError('email')">E-mail must be valid</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <input type="password" matInput placeholder="Your Password" formControlName="password" />
-            <mat-hint>Please enter your password</mat-hint>
-            <mat-error *ngIf="loginForm.get('password').hasError('required')">Password is required</mat-error>
-        </mat-form-field>
-        <button type="submit" mat-raised-button color="primary" [disabled]="!loginForm.valid">Submit</button>
-    </form>
+  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input type="email" matInput placeholder="Your Email" formControlName="email" />
+      <mat-hint>Please enter a valid email</mat-hint>
+      <mat-error *ngIf="loginForm.get('email').hasError('required')">Field must not be empty</mat-error>
+      <mat-error *ngIf="loginForm.get('email').hasError('email')">E-mail must be valid</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" matInput placeholder="Your Password" formControlName="password" />
+      <mat-hint>Please enter your password</mat-hint>
+      <mat-error *ngIf="loginForm.get('password').hasError('required')">Password is required</mat-error>
+    </mat-form-field>
+    <button *ngIf="!isLoading" type="submit" mat-raised-button color="primary"
+      [disabled]="!loginForm.valid">Submit</button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
 </section>
